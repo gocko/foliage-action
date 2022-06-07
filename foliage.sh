@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec /opt/pharo/pharo foliage.image clap foliage "$@"
+exec /opt/pharo/pharo /home/foliage/foliage.image clap foliage "$@"
