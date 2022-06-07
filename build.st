@@ -1,0 +1,21 @@
+"prepare"
+EpMonitor current disable.
+Iceberg remoteTypeSelector: #httpsUrl.
+"remove baseline to allow a proper load"
+#BaselineOfMicrodown asPackage removeFromSystem.
+{ 
+	{ 'github://pillar-markup/Microdown:dev/src'. 'Microdown'. 'Macrodown' }.
+	{ 'github://estebanlm/foliage/src'. 'Foliage'. 'Publisher' }.
+} do: [ :each |
+	[ 
+		Metacello new
+			ignoreImage;
+			onConflict: [ :e | e useIncoming ];
+			onUpgrade: [ :e | e useIncoming ];
+			repository: each first;
+			baseline: each second;
+			load: each third
+	] 
+	on: Warning 
+	do: [ :w | w resume ] 
+]

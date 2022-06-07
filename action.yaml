@@ -1,0 +1,18 @@
+name: "foliage"
+description: "Generates a static HTML site"
+inputs:
+  source:
+    description: "Directory of source"
+    required: true
+    default: "site"
+  target:
+    description: "Directory of generated files"
+    required: true
+    default: "generated"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "--source ${{ inputs.source }}"
+    - "--target ${{ inputs.target }}"
+    - "${{ inputs.source }}/.foliage.ston
