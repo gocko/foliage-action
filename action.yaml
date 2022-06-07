@@ -15,4 +15,4 @@ runs:
   args:
     - "--source ${{ inputs.source }}"
     - "--target ${{ inputs.target }}"
-    - "${{ inputs.source }}/.foliage.ston
+    - "${{ inputs.source }}/.foliage.ston"
