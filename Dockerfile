@@ -36,4 +36,4 @@ COPY build.st ./build.st
 RUN /opt/pharo/pharo ./foliage.image st --save --quit build.st; \
   rm build.st; \
   true
-ENTRYPOINT [ "./foliage" ]
+ENTRYPOINT [ "/home/foliage/foliage" ]
