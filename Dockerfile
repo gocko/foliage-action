@@ -21,13 +21,13 @@ RUN set -eu; \
 # install image
 WORKDIR /home/foliage
 ADD http://files.pharo.org/get-files/100/pharoImage-x86_64.zip ./pharo64.zip
-COPY foliage.sh ./run
+COPY foliage.sh ./run.sh
 RUN set -eu; \
   unzip pharo64.zip; \
   rm pharo64.zip; \
   mv *.image foliage.image; \
   mv *.changes foliage.changes; \
-  chmod +x foliage; \
+  chmod +x run.sh; \
   chown -R foliage.foliage *; \
   true
 USER foliage
@@ -37,4 +37,4 @@ RUN /opt/pharo/pharo ./foliage.image st --save --quit build.st; \
   rm build.st; \
   true
 # set 
-ENTRYPOINT [ "/home/foliage/run" ]
+ENTRYPOINT [ "/home/foliage/run.sh" ]
