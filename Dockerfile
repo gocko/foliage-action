@@ -24,9 +24,7 @@ RUN set -eu; \
   mv *.image foliage.image; \
   mv *.changes foliage.changes; \
   chmod +x run.sh; \
-  chown -R foliage.foliage *; \
   true
-USER foliage
 # install foliage
 COPY build.st ./build.st
 RUN /opt/pharo/pharo ./foliage.image st --save --quit build.st; \
