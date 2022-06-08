@@ -13,6 +13,7 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
+    - "publish"
     - "--source ${{ inputs.source }}"
     - "--target ${{ inputs.target }}"
     - "${{ inputs.source }}/.foliage.ston"
