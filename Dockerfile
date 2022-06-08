@@ -5,10 +5,6 @@ MAINTAINER Esteban Lorenzano <esteban@lorenzano.eu>
 #RUN apk add unzip bash
 RUN apt-get update && apt-get install unzip
 
-# add user
-#RUN adduser -D foliage
-RUN useradd -ms /bin/bash foliage
-
 # install vm
 USER root
 WORKDIR /opt/pharo
@@ -19,7 +15,7 @@ RUN set -eu; \
   rm vm.zip; \
   true
 # install image
-WORKDIR /home/foliage
+WORKDIR /opt/foliage
 ADD http://files.pharo.org/get-files/100/pharoImage-x86_64.zip ./pharo64.zip
 COPY foliage.sh ./run.sh
 RUN set -eu; \
@@ -37,4 +33,4 @@ RUN /opt/pharo/pharo ./foliage.image st --save --quit build.st; \
   rm build.st; \
   true
 # set 
-ENTRYPOINT [ "/home/foliage/run.sh" ]
+ENTRYPOINT [ "/opt/foliage/run.sh" ]
