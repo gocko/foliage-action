@@ -14,6 +14,6 @@ runs:
   image: "Dockerfile"
   args:
     - "publish"
-    - "--source ${{ inputs.source }}"
-    - "--target ${{ inputs.target }}"
-    - "${{ inputs.source }}/.foliage.ston"
+    - "--source ${{inputs.source}}"
+    - "--target ${{inputs.target}}"
+    - "${{inputs.source}}/.foliage.ston"
