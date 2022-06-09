@@ -4,7 +4,7 @@ inputs:
   source:
     description: "Directory of source"
     required: true
-    default: "site"
+    default: "."
   target:
     description: "Directory of generated files"
     required: true
