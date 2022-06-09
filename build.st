@@ -4,7 +4,7 @@ Iceberg remoteTypeSelector: #httpsUrl.
 "remove baseline to allow a proper load"
 #BaselineOfMicrodown asPackage removeFromSystem.
 { 
-	{ 'github://pillar-markup/Microdown:dev/src'. 'Microdown'. 'Macrodown' }.
+	{ 'github://estebanlm/Microdown:dev/src'. 'Microdown'. 'Macrodown' }.
 	{ 'github://estebanlm/foliage:master/src'. 'Foliage'. 'Publisher' }.
 } do: [ :each |
 	[ 
