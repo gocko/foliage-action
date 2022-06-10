@@ -4,8 +4,8 @@ Iceberg remoteTypeSelector: #httpsUrl.
 "remove baseline to allow a proper load"
 #BaselineOfMicrodown asPackage removeFromSystem.
 { 
-	{ 'github://estebanlm/Microdown:dev/src'. 'Microdown'. 'Macrodown' }.
-	{ 'github://estebanlm/foliage:master/src'. 'Foliage'. 'Publisher' }.
+	{ 'github://estebanlm/Microdown:v1-mac/src'. 'Microdown'. 'Macrodown' }.
+	{ 'github://estebanlm/foliage:v1/src'. 'Foliage'. 'Publisher' }.
 } do: [ :each |
 	[ 
 		Metacello new
@@ -18,4 +18,4 @@ Iceberg remoteTypeSelector: #httpsUrl.
 	] 
 	on: Warning 
 	do: [ :w | w resume ] 
-]
+]ed 
