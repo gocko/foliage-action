@@ -18,4 +18,4 @@ Iceberg remoteTypeSelector: #httpsUrl.
 	] 
 	on: Warning 
 	do: [ :w | w resume ] 
-]ed 
+]
