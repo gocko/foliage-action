@@ -15,6 +15,7 @@ Iceberg remoteTypeSelector: #httpsUrl.
 			repository: each first;
 			baseline: each second;
 			load: each third
+		Metacello new baseline: each second; lock. 
 	] 
 	on: Warning 
 	do: [ :w | w resume ] 
