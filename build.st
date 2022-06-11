@@ -14,7 +14,7 @@ Iceberg remoteTypeSelector: #httpsUrl.
 			onUpgrade: [ :e | e useIncoming ];
 			repository: each first;
 			baseline: each second;
-			load: each third
+			load: each third.
 		Metacello new baseline: each second; lock. 
 	] 
 	on: Warning 
