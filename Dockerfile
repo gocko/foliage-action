@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install unzip
 # install vm
 USER root
 WORKDIR /opt/pharo
-#ADD http://files.pharo.org/get-files/100/pharo-vm-Linux-x86_64-stable.zip ./vm.zip
-ADD https://files.pharo.org/vm/pharo-spur64-headless/Linux-x86_64/PharoVM-9.0.14-93600e1-Linux-x86_64-bin.zip ./vm.zip
+ADD https://files.pharo.org/get-files/110/pharo-vm-Linux-x86_64-stable.zip ./vm.zip
+#ADD https://files.pharo.org/vm/pharo-spur64-headless/Linux-x86_64/PharoVM-9.0.14-93600e1-Linux-x86_64-bin.zip ./vm.zip
 RUN set -eu; \
   unzip vm.zip; \
   rm vm.zip; \
