@@ -16,7 +16,7 @@ RUN set -eu; \
   true
 # install image & entrypoint.sh
 WORKDIR /opt/foliage
-ADD http://files.pharo.org/get-files/100/pharoImage-x86_64.zip ./pharo64.zip
+ADD http://files.pharo.org/get-files/110/pharoImage-x86_64.zip ./pharo64.zip
 COPY entrypoint.sh ./entrypoint.sh
 RUN set -eu; \
   unzip pharo64.zip; \
