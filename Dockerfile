@@ -1,34 +1,36 @@
-# Download Pharo Image in a clean image
-#FROM alpine:3
 FROM ubuntu:22.04
 MAINTAINER Esteban Lorenzano <esteban@lorenzano.eu>
-#RUN apk add unzip bash
-RUN apt-get update && apt-get install unzip
+RUN apt-get update
+RUN apt-get install -y unzip 
+RUN apt-get install -y curl
+RUN apt-get install -y gpg
 
-# install vm
+# add pharo-vm
+RUN echo 'deb http://download.opensuse.org/repositories/devel:/languages:/pharo:/latest/xUbuntu_22.04/ /' | tee /etc/apt/sources.list.d/devel:languages:pharo:latest.list
+RUN curl -fsSL https://download.opensuse.org/repositories/devel:languages:pharo:latest/xUbuntu_22.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/devel_languages_pharo_latest.gpg > /dev/null
+RUN apt-get update
+RUN apt-get install -y pharo9
+
+# set work environment
 USER root
-WORKDIR /opt/pharo
-ADD https://files.pharo.org/get-files/110/pharo-vm-Linux-x86_64-stable.zip ./vm.zip
-#ADD https://files.pharo.org/vm/pharo-spur64-headless/Linux-x86_64/PharoVM-9.0.14-93600e1-Linux-x86_64-bin.zip ./vm.zip
-RUN set -eu; \
-  unzip vm.zip; \
-  rm vm.zip; \
-  true
-# install image & entrypoint.sh
 WORKDIR /opt/foliage
-ADD http://files.pharo.org/get-files/110/pharoImage-x86_64.zip ./pharo64.zip
-COPY entrypoint.sh ./entrypoint.sh
+
+# download pharo image
+ADD http://files.pharo.org/get-files/100/pharoImage-x86_64.zip ./pharo64.zip
 RUN set -eu; \
   unzip pharo64.zip; \
   rm pharo64.zip; \
   mv *.image foliage.image; \
   mv *.changes foliage.changes; \
-  chmod +x entrypoint.sh; \
   true
+
 # install foliage
 COPY build.st ./build.st
-RUN /opt/pharo/pharo ./foliage.image st --save --quit build.st; \
+RUN pharo ./foliage.image st --save --quit build.st; \
   rm build.st; \
   true
-# set 
+
+# add entrypoint 
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x entrypoint.sh
 ENTRYPOINT [ "/opt/foliage/entrypoint.sh" ]
