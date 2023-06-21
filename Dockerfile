@@ -1,9 +1,6 @@
 FROM ubuntu:22.04
 MAINTAINER Esteban Lorenzano <esteban@lorenzano.eu>
-RUN apt-get update
-RUN apt-get install -y unzip 
-RUN apt-get install -y curl
-RUN apt-get install -y gpg
+RUN apt-get update -y && apt-get install -y unzip curl gpg
 
 # add pharo-vm
 RUN echo 'deb http://download.opensuse.org/repositories/devel:/languages:/pharo:/stable/xUbuntu_22.04/ /' | tee /etc/apt/sources.list.d/devel:languages:pharo:stable.list
