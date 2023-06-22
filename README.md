@@ -30,5 +30,4 @@ jobs:
           HOST: ${{secrets.REMOTE_HOST}}
           TARGET: ${{secrets.REMOTE_TARGET}}
           SOURCE: generated/
-          POST_SCRIPT: "cd ${{secrets.REMOTE_TARGET}} && ln -s . web"
 ```
